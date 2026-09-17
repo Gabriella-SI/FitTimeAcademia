@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
-import { 
-  Dumbbell, 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Instagram, 
-  Facebook, 
-  ChevronRight, 
-  Check, 
-  Users, 
-  Trophy,
-  Menu,
-  X
-} from 'lucide-react';
+
+// ÍCONES SVG NATIVOS (Sem dependências externas)
+const DumbbellIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6.5 6.5h11M6.5 17.5h11M4 9v6m16-6v6M2 11v2m20-2v2M8 5v14m8-14v14" />
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+  </svg>
+);
+
+const ChevronRightIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  </svg>
+);
+
+const MenuIcon = () => (
+  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,17 +40,15 @@ export default function App() {
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
-          {/* LOGO */}
           <div className="flex items-center gap-3">
-            <div className="bg-red-600 p-2.5 rounded-xl shadow-md shadow-red-600/30">
-              <Dumbbell className="h-6 w-6 text-white" />
+            <div className="bg-red-600 p-2.5 rounded-xl shadow-md shadow-red-600/30 text-white">
+              <DumbbellIcon />
             </div>
             <span className="text-2xl lg:text-3xl font-black tracking-wider text-white">
               fit<span className="text-red-600">.</span>time
             </span>
           </div>
 
-          {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-10 font-semibold text-sm text-zinc-300">
             <a href="#inicio" className="hover:text-red-500 transition-colors">Início</a>
             <a href="#modalidades" className="hover:text-red-500 transition-colors">Modalidades</a>
@@ -42,7 +57,6 @@ export default function App() {
             <a href="#contato" className="hover:text-red-500 transition-colors">Contato</a>
           </nav>
 
-          {/* CTA */}
           <div className="hidden lg:block">
             <a 
               href="#planos" 
@@ -52,16 +66,14 @@ export default function App() {
             </a>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden text-zinc-300 hover:text-white p-2"
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
 
-        {/* MOBILE NAV DROPDOWN */}
         {isMenuOpen && (
           <div className="lg:hidden bg-zinc-950 border-b border-zinc-800 px-6 pt-2 pb-6 flex flex-col gap-4">
             <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="text-zinc-300 py-2 border-b border-zinc-800">Início</a>
@@ -99,7 +111,7 @@ export default function App() {
                 href="#planos" 
                 className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-2 shadow-xl shadow-red-600/25 hover:scale-105"
               >
-                Conheça os Planos <ChevronRight size={20} />
+                Conheça os Planos <ChevronRightIcon />
               </a>
               <a 
                 href="#unidades" 
@@ -110,7 +122,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* CARD DE DESTAQUE NO DESKTOP */}
           <div className="lg:col-span-5 hidden lg:block">
             <div className="bg-zinc-900/80 border border-zinc-800 p-8 rounded-3xl backdrop-blur-sm shadow-2xl relative">
               <div className="absolute -top-4 -right-4 bg-red-600 text-white font-black text-xs uppercase px-4 py-1.5 rounded-full shadow-lg">
@@ -119,15 +130,15 @@ export default function App() {
               <h3 className="text-2xl font-black mb-4">Por que a fit.time?</h3>
               <ul className="space-y-4 text-zinc-300 text-sm">
                 <li className="flex items-start gap-3">
-                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><Check size={16} /></div>
+                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><CheckIcon /></div>
                   <span>Aparelhos biomecânicos de última geração</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><Check size={16} /></div>
+                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><CheckIcon /></div>
                   <span>Professores qualificados para acompanhamento individual</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><Check size={16} /></div>
+                  <div className="bg-red-600/20 text-red-500 p-1 rounded mt-0.5"><CheckIcon /></div>
                   <span>Ambiente totalmente climatizado e moderno</span>
                 </li>
               </ul>
@@ -152,7 +163,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             <div className="bg-zinc-900/60 border border-zinc-800 p-8 lg:p-10 rounded-3xl hover:border-red-600/50 transition-all hover:-translate-y-1">
               <div className="bg-red-600/10 p-4 rounded-2xl w-fit text-red-500 mb-6">
-                <Dumbbell size={36} />
+                <DumbbellIcon />
               </div>
               <h3 className="text-2xl font-bold mb-3">Musculação</h3>
               <p className="text-zinc-400 text-sm lg:text-base leading-relaxed">
@@ -162,7 +173,7 @@ export default function App() {
 
             <div className="bg-zinc-900/60 border border-zinc-800 p-8 lg:p-10 rounded-3xl hover:border-red-600/50 transition-all hover:-translate-y-1">
               <div className="bg-red-600/10 p-4 rounded-2xl w-fit text-red-500 mb-6">
-                <Trophy size={36} />
+                <DumbbellIcon />
               </div>
               <h3 className="text-2xl font-bold mb-3">Cross Training</h3>
               <p className="text-zinc-400 text-sm lg:text-base leading-relaxed">
@@ -172,7 +183,7 @@ export default function App() {
 
             <div className="bg-zinc-900/60 border border-zinc-800 p-8 lg:p-10 rounded-3xl hover:border-red-600/50 transition-all hover:-translate-y-1">
               <div className="bg-red-600/10 p-4 rounded-2xl w-fit text-red-500 mb-6">
-                <Users size={36} />
+                <DumbbellIcon />
               </div>
               <h3 className="text-2xl font-bold mb-3">Aulas Coletivas</h3>
               <p className="text-zinc-400 text-sm lg:text-base leading-relaxed">
@@ -207,13 +218,13 @@ export default function App() {
                 </div>
                 <ul className="space-y-4 text-sm lg:text-base text-zinc-300 mb-10">
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Acesso à musculação e aeróbico
+                    <span className="text-red-500"><CheckIcon /></span> Acesso à musculação e aeróbico
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Avaliação física inicial
+                    <span className="text-red-500"><CheckIcon /></span> Avaliação física inicial
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Acesso a 1 unidade
+                    <span className="text-red-500"><CheckIcon /></span> Acesso a 1 unidade
                   </li>
                 </ul>
               </div>
@@ -236,16 +247,16 @@ export default function App() {
                 </div>
                 <ul className="space-y-4 text-sm lg:text-base text-zinc-300 mb-10">
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Acesso ilimitado a todas as unidades
+                    <span className="text-red-500"><CheckIcon /></span> Acesso ilimitado a todas as unidades
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Aulas coletivas liberadas
+                    <span className="text-red-500"><CheckIcon /></span> Aulas coletivas liberadas
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Leve 1 acompanhante 5x por mês
+                    <span className="text-red-500"><CheckIcon /></span> Leve 1 acompanhante 5x por mês
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="text-red-500 flex-shrink-0" size={20} /> Cadeira de massagem inclusa
+                    <span className="text-red-500"><CheckIcon /></span> Cadeira de massagem inclusa
                   </li>
                 </ul>
               </div>
@@ -257,7 +268,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* UNIDADES & HORÁRIOS */}
+      {/* UNIDADES */}
       <section id="unidades" className="py-24 bg-black border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -273,7 +284,7 @@ export default function App() {
               <div className="space-y-8">
                 <div className="flex gap-5">
                   <div className="bg-red-600/10 p-4 rounded-2xl text-red-500 h-fit">
-                    <MapPin size={28} />
+                    <DumbbellIcon />
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Unidade Central</h4>
@@ -283,7 +294,7 @@ export default function App() {
 
                 <div className="flex gap-5">
                   <div className="bg-red-600/10 p-4 rounded-2xl text-red-500 h-fit">
-                    <Clock size={28} />
+                    <DumbbellIcon />
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Horário de Funcionamento</h4>
@@ -323,18 +334,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-zinc-900">
             <div className="flex items-center gap-3">
-              <div className="bg-red-600 p-2 rounded-xl">
-                <Dumbbell className="h-5 w-5 text-white" />
+              <div className="bg-red-600 p-2 rounded-xl text-white">
+                <DumbbellIcon />
               </div>
               <span className="text-2xl font-black tracking-wider text-white">
                 fit<span className="text-red-600">.</span>time
               </span>
-            </div>
-
-            <div className="flex items-center gap-6 text-zinc-400">
-              <a href="#" className="hover:text-red-500 transition-colors p-2"><Instagram size={22} /></a>
-              <a href="#" className="hover:text-red-500 transition-colors p-2"><Facebook size={22} /></a>
-              <a href="#" className="hover:text-red-500 transition-colors p-2"><Phone size={22} /></a>
             </div>
           </div>
 
