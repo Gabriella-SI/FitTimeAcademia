@@ -8,6 +8,7 @@ import {
   Facebook, 
   ChevronRight, 
   Check, 
+  Star, 
   Users, 
   Trophy,
   Menu,
